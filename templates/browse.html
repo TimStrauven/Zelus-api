@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+    
+    {% block content %}
+    <div>
+        <h2>Browse the chlotes</h2>
+    </div>
+    <div>
+        <h3>Chlotes</h3>
+        <div class="row">
+            {% for chlot in chlotes %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ chlot.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ chlot.name }}</h5>
+                        <p class="card-text">{{ chlot.description }}</p>
+                        <a href="/chlotes/{{ chlot.id }}" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}

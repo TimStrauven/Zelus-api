@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+    
+    {% block content %}
+        <div>
+            <h2>Type of chlotes</h2>
+        </div>
+        <div>
+            {% if number_of_types != 0 %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-header" style="color:black;">
+                  List
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for type in types %}
+                        <li class="list-group-item">{{ type }}</li>
+                    {% endfor %}
+                </ul>
+              </div>
+            {% else %}
+                <p sytle="color:white;">No types found</p>
+            {% endif %}
+        </div>
+    {% endblock %}
