@@ -9,7 +9,10 @@ html, body{
     height: 80%;
     left: calc(50% - 100px);
   }
-
+  #camera--view, #camera--sensor, #camera--output{
+    transform: scaleX(-1);
+    filter: FlipH;
+}
   #camera--trigger{
       width: 200px;
       background-color: rgba(19, 3, 167, 0.904);
