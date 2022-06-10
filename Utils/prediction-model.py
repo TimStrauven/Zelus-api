@@ -16,10 +16,6 @@ import timm
 from torchmetrics.functional import accuracy
 import os
 
-train_files = ""
-val_files  = ""
-test_files = ""
-predict_files = ""
 base_model = "dla60x_c"
 
 def model(train_files, val_files, test_files, base_model,predict_files):
@@ -70,8 +66,6 @@ def model(train_files, val_files, test_files, base_model,predict_files):
     trainer.save_checkpoint("./Imageclassifier.pt")
     return "Model has been saved"
 
-saved_model = "/home/biniam/Desktop/Zelus/Imageclassifier.pt"
-predict_files = "/home/biniam/Desktop/Zelus/archive_all/archive/vinted_test_only/kids__boys_clothing__sportswear/1766007596.jpeg"
 def prediction(predict_files, saved_model):
     """
     It takes in a list of files to predict on, and a saved model, and returns a list of predictions
@@ -89,6 +83,6 @@ def prediction(predict_files, saved_model):
     )
     model = ImageClassifier.load_from_checkpoint(saved_model)
     predictions = trainer.predict(model, datamodule=datamodule, output="labels")
-    #return predictions
-    print(predictions)
+    return predictions
+
 prediction(predict_files,saved_model)
