@@ -9,16 +9,16 @@ from flash import Trainer
 #from torchmetrics import F1Score
 import torch.nn.functional as F
 import numpy as np
-import albumentations as A
-from albumentations.pytorch import ToTensorV2
-import timm
+# import albumentations as A
+# from albumentations.pytorch import ToTensorV2
+# import timm
 
 from torchmetrics.functional import accuracy
 import os
 
 base_model = "dla60x_c"
 
-def model(train_files, val_files, test_files, base_model,predict_files):
+def model(train_files, val_files, test_files, base_model, predict_files):
     """
     We are creating a model from the ImageClassificationData class, which is a subclass of the
     DataModule class. We are passing in the train, validation, and test folders, as well as the base
@@ -44,16 +44,16 @@ def model(train_files, val_files, test_files, base_model,predict_files):
     :return: The model is being saved in the current directory.
     """
     datamodule = ImageClassificationData.from_folders(
-            train_folder=train_files,
-            val_folder=val_files,
-            test_folder=test_files,
-            predict_folder=predict_files,
-            transform_kwargs={"image_size": (224, 224)},
-            batch_size=128,
-            num_workers=48
+        train_folder=train_files,
+        val_folder=val_files,
+        test_folder=test_files,
+        predict_folder=predict_files,
+        transform_kwargs={"image_size": (224, 224)},
+        batch_size=128,
+        num_workers=48
         )
 
-    model = ImageClassifier(backbone=base_model, 
+    model = ImageClassifier(backbone=base_model,
                         labels=datamodule.labels,
                         multi_label=datamodule.multi_label,
                         num_classes=datamodule.num_classes,
@@ -69,20 +69,18 @@ def model(train_files, val_files, test_files, base_model,predict_files):
 def prediction(predict_files, saved_model):
     """
     It takes in a list of files to predict on, and a saved model, and returns a list of predictions
-    
+
     :param predict_files: The path to the folder containing the images you want to predict on
     :param saved_model: The path to the saved model
     """
 
-    trainer = Trainer()
+    trainer = Trainer(max_epochs=1, gpus=torch.cuda.device_count())
     datamodule = ImageClassificationData.from_files(
-    predict_files=predict_files,
-    batch_size=1,
-    num_workers=6,
-    transform_kwargs={"image_size": (224, 224), "mean": (0.485, 0.456, 0.406), "std": (0.229, 0.224, 0.225)},
+        predict_files=predict_files,
+        batch_size=1,
+        num_workers=4,
+        transform_kwargs={"image_size": (224, 224), "mean": (0.485, 0.456, 0.406), "std": (0.229, 0.224, 0.225)},
     )
     model = ImageClassifier.load_from_checkpoint(saved_model)
     predictions = trainer.predict(model, datamodule=datamodule, output="labels")
     return predictions
-
-prediction(predict_files,saved_model)

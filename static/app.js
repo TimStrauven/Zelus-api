@@ -24,29 +24,27 @@ cameraTrigger.onclick = function() {
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     cameraOutput.src = cameraSensor.toDataURL("image/jpeg");
     cameraOutput.classList.add("taken");
-    //uploadFile(cameraOutput.src);
     var imagefile = dataURLtoFile(cameraOutput.src, "image.jpeg");
     uploadFile(imagefile);
-    //uploadFile("/home/becode2/Desktop/Zelus_Images/archive/archive_cleaned/vinted_test_only/dresses/1367721197.jpeg");
-    setTimeout(function() {
-        location.reload();
-    }, 3000);
+    // setTimeout(function() {location.reload();}, 3000);
 };
+
+
 
 function uploadFile(file){
     if(file){
-        var xhr = new XMLHttpRequest();
-        var url = "/upload";
-        xhr.open("POST", url, true);
-        // xhr.setRequestHeader("Content-Type", "multipart/form-data");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);
-            }
-        };
-        var formData = new FormData();
-        formData.append("image", file);
-        xhr.send(formData);
+        var form = new FormData();
+        form.append("image", file);
+        $.ajax({
+            type: 'POST',
+            url: '/upload',
+            data: form,
+            cache: false,
+            processData: false,
+            contentType: false
+        }).done(function(data) {
+            document.getElementById("prediction").innerText = data;
+        });
     }
 }
 
