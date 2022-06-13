@@ -1,19 +1,19 @@
-html, body{
+/* html, body{
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-  }
-  #camera, #camera--view, #camera--sensor, #camera--output{
+  } */
+  /* #camera, #camera--view, #camera--sensor, #camera--output{
     position: absolute;
     height: 80%;
     left: calc(50% - 100px);
-  }
+  } */
   #camera--view, #camera--sensor, #camera--output{
     transform: scaleX(-1);
     filter: FlipH;
 }
-  #camera--trigger{
+  /* #camera--trigger{
       width: 200px;
       background-color: rgba(19, 3, 167, 0.904);
       color: white;
@@ -26,9 +26,9 @@ html, body{
       position: fixed;
       bottom: 30px;
       left: calc(50% - 100px);
-  }
+  } */
   
-  #prediction{
+  /* #prediction{
       width: 200px;
       background-color: rgba(19, 3, 167, 0.904);
       color: white;
@@ -41,9 +41,9 @@ html, body{
       position: fixed;
       top: 30px;
       left: calc(50% - 100px);
-  }
+  } */
   
-  .taken{
+  /* .taken{
       height: 100px!important;
       width: 100px!important;
       transition: all 0.5s ease-in;
@@ -52,10 +52,10 @@ html, body{
       top: 20px;
       right: 20px;
       z-index: 2;
-  }
+  } */
   
-  .container{
+  /* .container{
       width: 100%;
       position: relative;
       margin: 0px; 
-  }
+  } */

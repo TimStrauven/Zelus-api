@@ -37,7 +37,7 @@ function uploadFile(file){
         form.append("image", file);
         $.ajax({
             type: 'POST',
-            url: '/upload',
+            url: '/uploaded',
             data: form,
             cache: false,
             processData: false,

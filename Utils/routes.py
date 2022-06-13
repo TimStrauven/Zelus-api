@@ -35,15 +35,11 @@ class Routes:
             context = {"request": request}
             return templates.TemplateResponse("index.html", context)
 
-        @app.get("/browse", response_class=HTMLResponse)
-        async def browse(request: Request):
+        @app.get("/upload", response_class=HTMLResponse)
+        async def upload(request: Request):
             context = {"request": request}
-            return templates.TemplateResponse("browse.html", context)
+            return templates.TemplateResponse("upload.html", context)
 
-        @app.get("/prediction", response_class=HTMLResponse)
-        async def prediction(request: Request):
-            context = {"request": request}
-            return templates.TemplateResponse("prediction.html", context)
 
         @app.get("/type", response_class=HTMLResponse)
         async def type(request: Request):
@@ -60,8 +56,8 @@ class Routes:
             context = {"request": request}
             return templates.TemplateResponse("camera.html", context)
 
-        @app.post("/upload")
-        async def upload(image: UploadFile = File(...)):
+        @app.post("/uploaded")
+        async def uploaded(image: UploadFile = File(...)):
             try:
                 contents = await image.read()
                 with open("uploaded_" + image.filename, "wb") as f:
@@ -72,3 +68,23 @@ class Routes:
                 await image.close()
             pred = pred_model(["./uploaded_image.jpeg"], "./Utils/Imageclassifier.pt")
             return f"prediction: {pred}"
+
+        # @app.post("/submitform",response_class=HTMLResponse)
+        @app.post("/submitform")
+        async def handle_form(request:Request, my_picture_file:UploadFile = File(...)):
+            picture_name = "uploaded_" + my_picture_file.filename
+            try:
+                contents = await my_picture_file.read()
+                with open(picture_name, "wb") as f:
+                    f.write(contents)
+            except Exception:
+                return "There was an error uploading the file"
+            finally:
+                await my_picture_file.close()
+            pred = pred_model(["./uploaded_image.jpeg"], "./Utils/Imageclassifier.pt")
+            context = {"request":request}
+            context["filename"] = my_picture_file.filename
+            context["prediction"] = pred[0][0] #to take only the string
+            context["picture_name"] = picture_name
+            print()
+            return templates.TemplateResponse("detected.html",context)
