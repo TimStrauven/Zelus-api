@@ -18,6 +18,8 @@ In Zelus Image Project, the goal is to use AI to detect the type of clothes with
   <img src = "https://contrib.rocks/image?repo = rnadanadia/Zelus-api"/>
 </a>
 
+Made with [contributors-img](https://contrib.rocks).
+
 
 The project is done by the team on behalf of Becode Brussels 2022. All Becode Brussels students was involved in data collection process and preprocessing. 
 
