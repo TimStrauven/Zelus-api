@@ -1,1 +1,0 @@
-{'hats': 83.71, 'watches': 14.72, 'glasses': 1.2, 'shoes': 0.35, 't_shirts': 0.01, 'shorts': 0.0, 'gloves': 0.0, 'sweater': 0.0, 'dresses': 0.0, 'pants': 0.0}

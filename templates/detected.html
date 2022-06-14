@@ -9,7 +9,7 @@
           <h5 class="card-title" style="color:darkcyan">Clothes detecttion</h5>
           <p class="card-text">File : {{ filename }}</p>
           <h4 class="card-text" style="color:crimson;">Detected</h4>
-          <select class="form-select" aria-label="Default select example">
+          <select id="select-dropdown" class="form-select" aria-label="Default select example">
                 
                 {% for key,value in predictions.items() %}
                     {% if loop.index == 0 %}
@@ -19,12 +19,11 @@
                     {% endif %}
                 {% endfor %}
           </select>
-          <form action="/save_user_img" method="post" enctype="multipart/form-data">
-            <input type="hidden" id="unique-user-id" name="myId" value="{{ unique_id }}">
-          </form>
+          <input type="hidden" id="unique-user-id" name="myId" value="{{ unique_id }}">
+          <button type="submit" onclick="submit_dropdown();">submit</button>
           <p>If the class is not in the list, submit your own class </p>
-          <input type="text">
-            <button>submit your own class</button>
+          <input type="text" id="input-new-class">
+            <button type="submit" onclick="submit_new();">submit your own class</button>
           <div>
             <!-- <form action="/submitform" method="post" enctype="multipart/form-data"> -->
             <a href="/upload" id="button-loaded-image"  class="btn btn-primary" style="width:35%;margin-top: 20px;">upload another picture</a>
@@ -37,5 +36,36 @@
     
       </p>
     </div>
-        
+
+    <script>
+      function submit_new(){
+        var new_class = document.getElementById("input-new-class").value;
+        var unique_id = document.getElementById("unique-user-id").value;
+        sendData(unique_id, new_class);
+      }
+
+      function submit_dropdown() {
+        var select = document.getElementById("select-dropdown");
+        var selected = select.options[select.selectedIndex].value;
+        var unique_id = document.getElementById("unique-user-id").value;
+        selected = selected.split(" ")[0];
+        sendData(unique_id, selected);
+      }
+
+      function sendData(my_uuid, my_label) {
+        let form = new FormData();
+        form.append('uuid', my_uuid);
+        form.append('label', my_label);
+        console.log(my_uuid);
+        console.log(my_label);
+        $.ajax({
+            type: 'POST',
+            url: '/save_user_img',
+            data: form,
+            cache: false,
+            processData: false,
+            contentType: false
+        });
+      }
+    </script>
     {% endblock %}
