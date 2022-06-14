@@ -34,16 +34,21 @@ cameraTrigger.onclick = function() {
 function uploadFile(file){
     if(file){
         var form = new FormData();
-        form.append("image", file);
+        form.append("my_picture_file", file);
         $.ajax({
             type: 'POST',
-            url: '/uploaded',
+            url: '/submitform',
             data: form,
             cache: false,
             processData: false,
-            contentType: false
-        }).done(function(data) {
-            document.getElementById("prediction").innerText = data;
+            contentType: false,
+            success: function(data, textStatus) {
+                // data.redirect contains the string URL to redirect to
+                if(data){
+                    window.location.href = '/submitform';
+                }
+                
+            }
         });
     }
 }
