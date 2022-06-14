@@ -26,7 +26,10 @@ Sort alphabetically :
 
 The project is done by the team on behalf of Becode Brussels 2022. All Becode Brussels students was involved in data collection process and preprocessing. 
 
+# Timeline:
 
+- 2 May 2022 -> Company's presentation
+- 15 June 2022 -> Result
 
 
 # Roadmap:
@@ -38,5 +41,7 @@ Source : https://github.com/pierre-warnier/vinted.
 2. We classified data from 491 categories to 10 categories of clothes then training the data using Lightning Flash for transfer learning. We utilised backbone —"dla60x_c"-- for its accuracy. 
 
 3. The interface is using a combination ofFastAPI, Python HTML, Javascript, and CSS. In order to see the result, we recommend you to clone it and try it locally. 
+
+
 
 If others want to build on/contribute to the dataset, please read the documentation and send the message to Tim Strauven
