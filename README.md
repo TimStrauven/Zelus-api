@@ -19,13 +19,13 @@ Sort alphabetically :
 - Rosyidah Nadiah
 - Tim Strauven
 
+
+The project is done by the team on behalf of Becode Brussels 2022. All Becode Brussels students was involved in data collection process and preprocessing. 
+
 <a href="https://github.com/TimStrauven/Zelus-api/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=TimStrauven/Zelus-api" />
 </a>
 
-
-
-The project is done by the team on behalf of Becode Brussels 2022. All Becode Brussels students was involved in data collection process and preprocessing. 
 
 # Timeline:
 
