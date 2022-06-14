@@ -4,7 +4,7 @@
     {% block content %}
     <h1 style="color:white">Your clothes</h1>
     <div class="card" style="width: 35rem;">
-        <img src="./data/{{ picture_name }}" id="my-loaded-image" class="card-img-top" alt="no image">
+        <img src="{{ uploadfolder }}{{ picture_name }}" id="my-loaded-image" class="card-img-top" alt="no image">
         <div class="card-body">
           <h5 class="card-title" style="color:darkcyan">Clothes detecttion</h5>
           <p class="card-text">File : {{ filename }}</p>
@@ -19,7 +19,9 @@
                     {% endif %}
                 {% endfor %}
           </select>
-          <button>Submit</button>
+          <form action="/save_user_img" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="unique-user-id" name="myId" value="{{ unique_id }}">
+          </form>
           <p>If the class is not in the list, submit your own class </p>
           <input type="text">
             <button>submit your own class</button>

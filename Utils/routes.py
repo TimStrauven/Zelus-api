@@ -97,40 +97,39 @@ class Routes:
             try:
                 print("entering the try")
                 contents = await my_picture_file.read()
-                with open(f"./data/{picture_name}", "wb") as f:
+                with open(f"{self.uploadfolder}{picture_name}", "wb") as f:
                     f.write(contents)
             except Exception:
                 print("entering the except")
                 return "There was an error uploading the file"
             finally:
                 await my_picture_file.close()
-            pred = pred_model([f"./data/{picture_name}"], "./Utils/Imageclassifier.pt")
+            pred = pred_model([f"{self.uploadfolder}{picture_name}"], "./Utils/Imageclassifier.pt")
+            with open(self.uploadfolder + image_name + ".txt", "w") as f:
+                 f.write(str(pred))
             context = {"request":request}
             context["filename"] = my_picture_file.filename
             context["predictions"] = pred#to take only the string
             context["predictions_percentage"] = pred.items() #to take only the string
             context["picture_name"] = picture_name
+            context["uploadfolder"] = self.uploadfolder
+            context["unique_id"] = image_name
             print(pred)
             return templates.TemplateResponse("detected.html",context)
 
 
-        #      @app.post("/upload")
-        # async def upload(image: UploadFile = File(...)):
-        #     try:
-        #         contents = await image.read()
-        #         "create uud id for image name and add original extension"
-        #         extension = image.filename.split(".")[-1]
-        #         image_name = str(uuid.uuid4())
-        #         image_name_ext = image_name + "." + extension
-        #         with open(self.uploadfolder + image_name_ext, "wb") as f:
-        #             f.write(contents)
-        #     except Exception:
-        #         return "There was an error uploading the file"
-        #     finally:
-        #         await image.close()
-        #     pred = pred_model([self.uploadfolder + image_name_ext], "./Utils/Imageclassifier.pt")
-        #     with open(self.uploadfolder + image_name + ".txt", "w") as f:
-        #         f.write(str(pred))
-        #     return f"Prediction: {pred} of {image_name_ext}"
-
-        
+        @app.post("/save_user_img")
+        async def save_user_img(image: UploadFile = File(...), label: str = ""):
+            if label == "":
+                return "Please pick or enter a label"
+            if not os.path.exists(self.userfolder + label):
+                os.makedirs(self.userfolder + label)
+            try:
+                contents = await image.read()
+                with open(self.userfolder + label + "/" + image.filename, "wb") as f:
+                    f.write(contents)
+            except Exception:
+                return "There was an error uploading the file"
+            finally:
+                await image.close()
+            return f"Image saved to {self.userfolder + label}"
