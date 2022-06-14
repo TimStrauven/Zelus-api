@@ -12,18 +12,17 @@ Today, there are more approach to reach the sustainability thanks to technology.
 
 # The Team:
 
-<a href="https://github.com/TimStrauven/Zelus-api/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=TimStrauven/Zelus-api" />
-</a>
-
-
-
 
 Sort alphabetically :
 - Biniam Berhe
 - Fortunê BT
 - Rosyidah Nadiah
 - Tim Strauven
+
+<a href="https://github.com/TimStrauven/Zelus-api/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=TimStrauven/Zelus-api" />
+</a>
+
 
 
 The project is done by the team on behalf of Becode Brussels 2022. All Becode Brussels students was involved in data collection process and preprocessing. 
