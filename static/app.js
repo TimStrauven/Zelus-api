@@ -26,25 +26,24 @@ cameraTrigger.onclick = function() {
     cameraOutput.classList.add("taken");
     var imagefile = dataURLtoFile(cameraOutput.src, "image.jpeg");
     uploadFile(imagefile);
-    // setTimeout(function() {location.reload();}, 3000);
 };
-
 
 
 function uploadFile(file){
     if(file){
-        var form = new FormData();
-        form.append("image", file);
+        const form = new FormData();
+        form.append("my_picture_file", file);
         $.ajax({
             type: 'POST',
-            url: '/uploaded',
+            url: '/submitform',
             data: form,
             cache: false,
             processData: false,
-            contentType: false
-        }).done(function(data) {
-            document.getElementById("prediction").innerText = data;
-        });
+            contentType: false,
+            success: function(data) {
+                document.write(data)
+            }
+        })
     }
 }
 
