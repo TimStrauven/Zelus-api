@@ -1,13 +1,26 @@
 # Zelus-api
+###Description
+	Fashion industry motivates more consumption to pursue the growth of business. More brands are coming to the market to compete with fast fashion in industry as consumer demand for cheap, fast fashion is the major contributors However, the similarity of most of these brands are in their quality which is not going to be more durable, better or more resilience but to be cheaper and faster to make. Thanks to globalisation with cost pressure, the quality of fibre is very low and make it harder to recycle into new garments. 
+	A recognition to go towards sustainable fashion has become more popular and it concerns more than just addressing fashion textiles or products. It addresses the entire manner in which clothing is produced, who produces it, and how long the life span of a product is before it reaches the landfill. This sustainable movement combats the large carbon footprint that the fashion industry and fast fashion have created by reducing greenhouse gas emissions. Reducing the environmental impact of fashion can combat air pollution, water pollution and overall climate change that could possibly prevent millions of premature deaths over the next century.
+	Today, there are more approach to reach the sustainability thanks to advanced technology. The technology that is widely used is deep learning method with optical character recognition (OCR) for image classification. The image classification is a supervised learning problem which define a set of target classes and train a model.
+	In Zelus Image Project, the goal is to use AI to detect the type of clothes with user friendly interface. The project has two important parts such as deep learning modelling and API. We are using Lightning Flash model to train the dataset and FastAPI for API process. In deep learning model, we classified the label from 491 categories to 10 categories to simplify the training process and to detect general type of clothes and accessories. 
+### The Team:
+Biniam
+Fortune BT
+Rosyidah Nadiah
+Tim Strauven.
 
-### Description:
 
-This project has the source code for an api to detect pieces of clothing (shoes, long pants, shorts, ...) from pictures.
+The project is done by Biniam, Fortuné BT, Rosyidah Nadiah, and Tim Strauven, on behalf of Becode Brussels 2022. All Becode Brussels students was involved in data collection process and preprocessing. 
 
 
-### Background info:
-Sustainable fashion (also known as eco-fashion) is an all-inclusive term describing products, processes, activities, and actors (policymakers, brands, consumers) aiming to achieve a carbon-neutral fashion industry, built on equality, social justice, animal welfare, and ecological integrity. Sustainable fashion concerns more than just addressing fashion textiles or products. It addresses the entire manner in which clothing is produced, who produces it, and how long the life span of a product is before it reaches the landfill. This sustainable movement combats the large carbon footprint that the fashion industry and fast fashion have created by reducing greenhouse gas emissions. Reducing the environmental impact of fashion can combat air pollution, water pollution and overall climate change that could possibly prevent millions of premature deaths over the next century.
+### Roadmap:
 
-Sustainable fashion deals with considering fashion from the perspective of a variety of stakeholders ranging from contemporary producers and consumers of clothes, to future producers and consumers.
+We broke the task in several main steps:
+1. Thanks to Pierre, we are able to collect the dataset from Vinted, source : https://github.com/pierre-warnier/vinted. In details :
+We obtained 491 categories from women, men and children clothes. 
+2. Separated train and val folder where val folder contains 1/5th. 
+3. We classified data from 491 categories to 10 categories of clothes then training the data using Lightning Flash for transfer learning. We utilised backbone —"dla60x_c"-- for its accuracy. 
+4. The interface is using FastAPI, Python HTML, Javascript, and CSS. In order to see the result, we recommend you to clone it and try it locally. 
 
-In 2020, it was found that an approach of voluntarily self-directed reform of textile manufacturing supply chains to substantially reduce the environmental impact of fashion by large companies themselves has failed. Measures to reform fashion towards sustainability beyond marketing campaigns of greenwashing may need to involve policies for the creation and enforcement of standardized certificates along with related import control and subsidy and eco-tariffs-like interventions.
+If others want to build on/contribute to the dataset, please read the documentation and send the message to Tim Strauven
