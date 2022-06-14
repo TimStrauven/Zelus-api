@@ -36,10 +36,10 @@ The project is done by the team on behalf of Becode Brussels 2022. All Becode Br
 # Roadmap:
 
 We broke the task in several main steps:
-1. Thanks to Pierre, we are able to collect the dataset from Vinted. We obtained 491 categories from women, men and children clothes then separated train and val folder where val folder contains 1/5th. . 
+1. Thanks to Pierre, we are able to collect the dataset from Vinted. We obtained 491 categories from women, men and childrens' clothes then separate the file to train and val folder where val folder contains 1/5th. 
 Source : https://github.com/pierre-warnier/vinted. 
 
-2. We classified data from 491 categories to 10 categories of clothes then training the data using Lightning Flash for transfer learning. We utilised backbone —"dla60x_c"-- for its accuracy level. 
+2. We classified data from 491 categories to 10 categories of clothes then using Lightning Flash for transfer learning. We utilised backbone —"dla60x_c"-- for its accuracy level. 
 
 3. The interface is using a combination of FastAPI, Python HTML, Javascript, and CSS. In order to see the result, we recommend you to clone it and try it locally. 
 
