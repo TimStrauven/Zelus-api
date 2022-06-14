@@ -78,8 +78,7 @@ class Routes:
 
             return f"prediction: {pred}"
 
-        # @app.post("/submitform",response_class=HTMLResponse)
-        @app.post("/submitform")
+        @app.post("/submitform", response_class=HTMLResponse)
         async def handle_form(request: Request, my_picture_file: UploadFile = File(...)):
             print("running handle_form")
             image_name = str(uuid.uuid4())
