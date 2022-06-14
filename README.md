@@ -14,7 +14,7 @@ In Zelus Image Project, the goal is to use AI to detect the type of clothes with
 
 # The Team:
 
-- Biniam
+@ Biniam
 - Fortune BT
 - Rosyidah Nadiah
 - Tim Strauven.
