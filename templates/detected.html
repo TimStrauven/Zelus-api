@@ -6,11 +6,10 @@
     <div class="card" style="width: 35rem;">
         <img src="{{ uploadfolder }}{{ picture_name }}" id="my-loaded-image" class="card-img-top" alt="no image">
         <div class="card-body">
-          <h5 class="card-title" style="color:darkcyan">Clothes detecttion</h5>
+          <h5 class="card-title" style="color:darkcyan">Clothes detection</h5>
           <p class="card-text">File : {{ filename }}</p>
-          <h4 class="card-text" style="color:crimson;">Detected</h4>
+          <h4 id="feedback_header" class="card-text" style="color:crimson;">Detected</h4>
           <select id="select-dropdown" class="form-select" aria-label="Default select example">
-                
                 {% for key,value in predictions.items() %}
                     {% if loop.index == 0 %}
                         <option selected>{{ key }} - level of confidence : {{ value }}%</option>
@@ -20,10 +19,10 @@
                 {% endfor %}
           </select>
           <input type="hidden" id="unique-user-id" name="myId" value="{{ unique_id }}">
-          <button type="submit" onclick="submit_dropdown();">submit</button>
-          <p>If the class is not in the list, submit your own class </p>
+          <button id="submit_dropdown_btn" type="submit" onclick="submit_dropdown();">submit</button>
+          <p id="help_title">If the class is not in the list, submit your own class </p>
           <input type="text" id="input-new-class">
-            <button type="submit" onclick="submit_new();">submit your own class</button>
+            <button id="submit_new_btn" type="submit" onclick="submit_new();">submit your own class</button>
           <div>
             <!-- <form action="/submitform" method="post" enctype="multipart/form-data"> -->
             <a href="/upload" id="button-loaded-image"  class="btn btn-primary" style="width:35%;margin-top: 20px;">upload another picture</a>
@@ -41,6 +40,11 @@
       function submit_new(){
         var new_class = document.getElementById("input-new-class").value;
         var unique_id = document.getElementById("unique-user-id").value;
+        document.getElementById("select-dropdown").style.visibility = "hidden";
+        document.getElementById("submit_dropdown_btn").style.visibility = "hidden";
+        document.getElementById("help_title").style.visibility = "hidden";
+        document.getElementById("input-new-class").style.visibility = "hidden";
+        document.getElementById("submit_new_btn").style.visibility = "hidden";
         sendData(unique_id, new_class);
       }
 
@@ -48,6 +52,11 @@
         var select = document.getElementById("select-dropdown");
         var selected = select.options[select.selectedIndex].value;
         var unique_id = document.getElementById("unique-user-id").value;
+        document.getElementById("select-dropdown").style.visibility = "hidden";
+        document.getElementById("submit_dropdown_btn").style.visibility = "hidden";
+        document.getElementById("help_title").style.visibility = "hidden";
+        document.getElementById("input-new-class").style.visibility = "hidden";
+        document.getElementById("submit_new_btn").style.visibility = "hidden";
         selected = selected.split(" ")[0];
         sendData(unique_id, selected);
       }
@@ -65,6 +74,8 @@
             cache: false,
             processData: false,
             contentType: false
+        }).done(function(data) {
+            document.getElementById("feedback_header").innerHTML = "File saved";
         });
       }
     </script>
