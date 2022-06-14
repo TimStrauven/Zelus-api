@@ -35,21 +35,11 @@ function uploadFile(file){
     if(file){
         var form = new FormData();
         form.append("my_picture_file", file);
-        $.ajax({
-            type: 'POST',
-            url: '/submitform',
-            data: form,
-            cache: false,
-            processData: false,
-            contentType: false,
-            success: function(data, textStatus) {
-                // data.redirect contains the string URL to redirect to
-                if(data){
-                    window.location.href = '/submitform';
-                }
-                
-            }
-        });
+        const XHR = new XMLHttpRequest()
+
+        XHR.open('POST', '/submitform');
+        console.log('string')
+        XHR.send(form);
     }
 }
 
