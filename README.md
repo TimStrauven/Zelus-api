@@ -17,6 +17,7 @@ In Zelus Image Project, the goal is to use AI to detect the type of clothes with
 <a href = "https://github.com/TimStrauven/Zelus-api/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo = GitHub_username/repository_name"/>
 </a>
+Made with [contributors-img](https://contrib.rocks
 
 - Biniam Berhe
 - Fortunê BT
