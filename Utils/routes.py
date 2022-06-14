@@ -9,6 +9,7 @@ import os
 from PIL import Image
 import base64
 from io import BytesIO
+from Utils import prediction_model as pred_model
 
 class Routes:
     app = FastAPI()
@@ -58,21 +59,6 @@ class Routes:
             context = {"request": request}
             return templates.TemplateResponse("camera.html", context)
 
-        @app.post("/camera_post", response_class=HTMLResponse)
-        async def camera_post(file: UploadFile = File(...)):
-            if not file:
-                print("No image")
-            else:
-                #dataURL = bytes(image, 'utf-8')
-                image = await file.read()
-                with open("temp.jpg", "wb") as fh:
-                    fh.write(image)
-
-                #im = Image.open("temp.jpg")
-                print("image is here")
-
-            return templates.TemplateResponse("camera.html")
-
         @app.post("/upload")
         async def upload(image: UploadFile = File(...)):
             try:
@@ -83,6 +69,7 @@ class Routes:
                 return {"message": "There was an error uploading the file"}
             finally:
                 await image.close()
+            pred = pred_model([image.filename], './Utils/Imageclassifier.pt')
 
             return {"message": f"Successfuly uploaded {image.filename}"}
 
