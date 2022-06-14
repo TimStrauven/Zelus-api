@@ -15,6 +15,7 @@ import numpy as np
 
 from torchmetrics.functional import accuracy
 import os
+import pandas as pd
 
 base_model = "dla60x_c"
 
@@ -82,5 +83,11 @@ def prediction(predict_files, saved_model):
         transform_kwargs={"image_size": (224, 224), "mean": (0.485, 0.456, 0.406), "std": (0.229, 0.224, 0.225)},
     )
     model = ImageClassifier.load_from_checkpoint(saved_model)
-    predictions = trainer.predict(model, datamodule=datamodule, output="labels")
-    return predictions
+    predictions = trainer.predict(model, datamodule=datamodule, output="probabilities")
+
+    pred_series = pd.Series(dict(zip(model.labels, predictions[0][0])))
+    pred_series = pred_series.sort_values(ascending=False)
+    pred_series = pred_series.apply(lambda x: round(x * 100, 2))
+    pred = pred_series.to_dict()
+    
+    return pred

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div>
+    <div>
+        <h2>Browse the chlotes</h2>
+    </div>
+    <div>
+        <h3>Chlotes</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <!-- <img class="card-img-top" src="" alt="Card image cap"> -->
+                    <div class="card-body">
+                        <h5 class="card-title">my title</h5>
+                        <p class="card-text"> my text </p>
+                        <form action="/submitform" method="post" enctype="multipart/form-data">
+                            <label for="formFileLg" class="form-label">File input</label>
+                            <input name="my_picture_file" class="form-control form-control-lg" id="formFileLg"
+                                type="file">
+                            <button id="button-load-image" type="submit" class="btn btn-primary"
+                                style="width:20%;margin-top: 20px;">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
