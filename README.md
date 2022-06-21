@@ -2,7 +2,7 @@
 
 # Description
 
-Fashion industry motivates more consumption to pursue the growth of business. In result, the quality of garment is not going to be more durable, better or more resilience but to be cheaper and faster to make. Thanks to globalisation with cost pressure, the quality of fibre is very low and make it harder to recycle into new garments. 
+Fashion industry motivates more consumption to pursue the growth of business. In result, the quality of garment is not going to be more durable, better or more resilience, but to be cheaper and faster to make. Thanks to globalisation with cost pressure, the quality of fiber is very low and make it harder to recycle into new garments. 
 
 A recognition to go towards sustainable fashion has become more popular and it concerns more than just addressing fashion textiles or products. It addresses the entire manner in which clothing is produced, who produces it, and how long the life span of a product is before it reaches the landfill. This sustainable movement combats the large carbon footprint that the fashion industry and fast fashion have created by reducing greenhouse gas emissions. Reducing the environmental impact of fashion can combat air pollution, water pollution and overall climate change that could possibly prevent millions of premature deaths over the next century.
 
