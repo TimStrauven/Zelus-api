@@ -41,7 +41,7 @@ Source : https://github.com/pierre-warnier/vinted.
 
 2. We classified data from 491 categories to 10 categories of clothes then using Lightning Flash for transfer learning. We utilised backbone —"dla60x_c"-- for its accuracy level. 
 
-3. The interface is using a combination of FastAPI, Python HTML, Javascript, and CSS. In order to see the result, we recommend you to clone it and try it locally. 
+3. The interface is using a combination of FastAPI, Python, HTML, Javascript, and CSS. In order to see the result, we recommend you to clone it and try it locally. 
 
 
 
