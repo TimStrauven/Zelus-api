@@ -20,6 +20,7 @@ class Routes:
     # CORS(app)
 
     def __init__(self):
+        self.check_folders()
         self.app.mount("/static", StaticFiles(directory="./static"), name="static")
         self.app.mount("/data", StaticFiles(directory="./data"), name="data")
         self.templates = Jinja2Templates(directory="templates")
@@ -40,7 +41,6 @@ class Routes:
 
     def run(self):
         print("Run Routes")
-        self.check_folders()
         self.start()
         return self.app
 
