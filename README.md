@@ -1,5 +1,7 @@
 # Zelus-api
 
+A PyTorch solution to classify clothing from images.
+
 # Description
 
 Fashion industry motivates more consumption to pursue the growth of business. In result, the quality of garment is not going to be more durable, better or more resilience, but to be cheaper and faster to make. Thanks to globalisation with cost pressure, the quality of fiber is very low and make it harder to recycle into new garments. 
